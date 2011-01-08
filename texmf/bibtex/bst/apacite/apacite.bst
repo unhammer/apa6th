@@ -3933,8 +3933,15 @@ FUNCTION {format.doi}
 {
   doi empty$
     'skip$
-    { % output.new.block articleurl
-      write$ ", doi:"
+    {
+      articleurl empty$
+	'skip$
+	{ 
+          output.new.block articleurl
+          write$ ","
+	}
+      if$
+      write$ " doi:"
       write$ doi
     }
   if$
