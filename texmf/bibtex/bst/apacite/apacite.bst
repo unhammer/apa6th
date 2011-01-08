@@ -3913,11 +3913,11 @@ FUNCTION {format.pubmedurl}
     %   format.articleurl
     %
 FUNCTION {format.articleurl}
-{ articleurl empty$
+{ url empty$
     'skip$
     { output.new.block url.start
-      write$ articleurl
-      write$ articleurl.stop
+      write$ url
+      write$ url.stop
     }
   if$
 }
