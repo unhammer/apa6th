@@ -22,3 +22,5 @@ TODO:
 * APA 6th merged all those headings alternatives into one, so really
   the default should be FiveLevelHeading and the other alternatives
   should be removed.
+* apacite.bst should not output articleurl-block if articleurl is
+  empty (doi-function)
