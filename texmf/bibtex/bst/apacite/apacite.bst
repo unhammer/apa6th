@@ -59,7 +59,6 @@ ENTRY
   { address
     annote       % only used for annotated version
     annotate     % only used for annotated version
-    articleurl   % special JOV tag
     author
     booktitle    % for articles in books
     chair        % for lectures
@@ -98,7 +97,6 @@ ENTRY
         %
     pages
     publisher
-    pubmedurl % special JOV tag
     school       % for theses
     series       % not used
     symposium    % for lectures
@@ -2386,10 +2384,6 @@ FUNCTION {et.al.string.period} { "\ \BOthersPeriod{.}" }
 
 FUNCTION {url.start} { "[\href{" }
 
-FUNCTION {pubmedurl.stop} { "}{PubMed}]" }
-
-FUNCTION {articleurl.stop} { "}{Article}]" }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -3890,40 +3884,6 @@ FUNCTION {output.howpublished}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %
-    % format pubmedurl if not empty,
-    % for various entry types
-    % call with
-    %   format.pubmedurl
-    %
-FUNCTION {format.pubmedurl}
-{ pubmedurl empty$
-    'skip$
-    { output.new.block url.start
-      write$ pubmedurl
-      write$ pubmedurl.stop
-    }
-  if$
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %
-    % format articleurl if not empty,
-    % for various entry types
-    % call with
-    %   format.articleurl
-    %
-FUNCTION {format.articleurl}
-{ url empty$
-    'skip$
-    { output.new.block url.start
-      write$ url
-      write$ url.stop
-    }
-  if$
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %
     % format doi if not empty,
     % for various entry types
     % call with
@@ -3934,13 +3894,6 @@ FUNCTION {format.doi}
   doi empty$
     'skip$
     {
-      articleurl empty$
-	'skip$
-	{ 
-          output.new.block articleurl
-          write$ ","
-	}
-      if$
       write$ " doi:"
       write$ doi
     }
@@ -4170,25 +4123,30 @@ FUNCTION {periodical}
     %
   format.howpublished  add.period$
       %
-      % format url
+      % format url, but only if doi is empty
       %
   url empty$
     'skip$
-    { % Clear the stack
-      duplicate$ empty$
-        'skip$
-        { output.new.block }
+    {
+      doi empty$
+      {
+	% Clear the stack
+	duplicate$ empty$
+          'skip$
+          { output.new.block }
+	if$
+	format.url
+      }
+      'skip$
       if$
-      format.url
     }
   if$
     %
     % possible reprint and optional note
+    % TODO: should orig.note really be between the url and doi positions?
     %
   format.orig.note
   format.doi
-  format.pubmedurl
-  format.articleurl
   fin.entry
 }
 

@@ -14,6 +14,7 @@ Changes so far:
   levelfour, levelfive)
 * Output DOI in references (copied from
   [jovcite.bst](http://www.tobias-elze.de/latex/jovcite.bst))
+* Output URL in references only if there is no DOI
 
 
 TODO:
@@ -22,4 +23,3 @@ TODO:
 * APA 6th merged all those headings alternatives into one, so really
   the default should be FiveLevelHeading and the other alternatives
   should be removed.
-* Can't seem to get articleurl to output (some error)
