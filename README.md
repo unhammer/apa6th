@@ -3,7 +3,8 @@ One or two modifications to
 apacite.bst (which are based on APA 5th) to make them look more like
 APA 6th.
 
-Very incomplete.
+Very incomplete. If you have APA 6th modifications to apa.cls or
+apacite.bst, I'd love to have them in here :-)
 
 Changes so far:
 ---------------
