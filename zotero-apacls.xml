@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <option name="inputencoding" value="utf8" />
+  <option name="documentclass" value="apa" />
+  <option name="global_options" value="a4paper,11pt,norsk" />
+  <option name="use_bibtex" value="true" />
+  <option name="bibtex_style" value="apacite" />
+  <option name="bibtex_external_bibtex_files" value="true" />
+  <option name="use_color" value="false" />
+  <option name="use_hyperref" value="false" />
+  <!-- <option name="formatting" value="ignore_most" /> -->
+  <option name="page_formatting" value="ignore_all" />
+  <option name="ignore_empty_paragraphs" value="true" />
+  <option name="ignore_hard_page_breaks" value="true" />
+  <option name="ignore_hard_line_breaks" value="true" />
+  <option name="ignore_double_spaces" value="true" />
+  <option name="metadata" value="false" />
+  <heading-map max-level="6">
+    <heading-level-map writer-level="1" name="section" level="0" />
+    <heading-level-map writer-level="2" name="subsection" level="1" />
+    <heading-level-map writer-level="3" name="subsubsection" level="2" />
+    <heading-level-map writer-level="4" name="paragraph" level="3" />
+    <heading-level-map writer-level="5" name="subparagraph" level="4" />
+  </heading-map>
+  <custom-preamble>
+    \usepackage{verbatim} 
+    %% apacite messes up lyx if the documentclass is not apa!
+    \usepackage{apacite} % after babel
+    \usepackage[authoryear]{natbib} % for citet, etc.
+  </custom-preamble>
+</config>
+
