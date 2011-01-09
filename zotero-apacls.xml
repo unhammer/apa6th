@@ -2,7 +2,7 @@
 <config>
   <option name="inputencoding" value="utf8" />
   <option name="documentclass" value="apa" />
-  <option name="global_options" value="a4paper,11pt,norsk" />
+  <option name="global_options" value="a4paper,12pt,norsk" />
   <option name="use_bibtex" value="true" />
   <option name="bibtex_style" value="apacite" />
   <option name="bibtex_external_bibtex_files" value="true" />
@@ -28,5 +28,7 @@
     \usepackage{apacite} % after babel
     \usepackage[authoryear]{natbib} % for citet, etc.
   </custom-preamble>
+  <style-map name="Quotations" family="paragraph"
+    before="\begin{quote}" after="\end{quote}" />
 </config>
 
